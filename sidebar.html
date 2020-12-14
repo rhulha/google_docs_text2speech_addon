@@ -95,7 +95,7 @@
       <span class="gray branding-text">Text To Speech</span>
     </div>
 
-    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.410.0.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.583.0.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
     <script>
@@ -119,10 +119,11 @@
         AWS.config.secretAccessKey=$('input[name=secretAccessKey]').val();
         var speechParams = {
           OutputFormat: "mp3",
-          SampleRate: "16000",
+          Engine: "neural",
+          SampleRate: "24000",
           Text: text,
           TextType: "text",
-          VoiceId: "Matthew"
+          VoiceId: $('input[name=voice]:checked').val()
         };
        
        var polly = new AWS.Polly({apiVersion: '2016-06-10'});
